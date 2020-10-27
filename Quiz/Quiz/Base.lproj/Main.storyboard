@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nri-vB-Zh3">
-                                <rect key="frame" x="184.5" y="186" width="45.5" height="36"/>
+                                <rect key="frame" x="184" y="186" width="46" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sB-z7-bCn">
-                                <rect key="frame" x="184.5" y="392" width="45.5" height="36"/>
+                                <rect key="frame" x="184" y="392" width="46" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,10 +49,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2sB-z7-bCn" firstAttribute="top" relation="lessThanOrEqual" secondItem="dJc-No-Mgd" secondAttribute="bottom" constant="120" id="GNF-uQ-W4h"/>
                             <constraint firstItem="2cy-kw-Obf" firstAttribute="top" secondItem="2sB-z7-bCn" secondAttribute="bottom" constant="8" id="MT6-vc-eNn"/>
                             <constraint firstItem="2sB-z7-bCn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RgD-TU-yAB"/>
-                            <constraint firstItem="nri-vB-Zh3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="142" id="Shb-pN-6X7"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2cy-kw-Obf" secondAttribute="bottom" constant="384" id="UF8-QT-DFM"/>
+                            <constraint firstItem="nri-vB-Zh3" firstAttribute="top" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="142" id="Shb-pN-6X7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="2cy-kw-Obf" secondAttribute="bottom" constant="384" id="UF8-QT-DFM"/>
                             <constraint firstItem="2cy-kw-Obf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bee-W4-y3o"/>
                             <constraint firstItem="nri-vB-Zh3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bev-vN-hUg"/>
                             <constraint firstItem="dJc-No-Mgd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hEm-cA-KeT"/>
