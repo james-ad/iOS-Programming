@@ -7,13 +7,43 @@
 
 import UIKit
 
-class ConversionViewController: UIViewController {
+class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateCelciusLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let timeFormatter = DateFormatter()
+        timeFormatter.locale = NSLocale.current
+        timeFormatter.timeStyle = .short
+        timeFormatter.dateStyle = .none
         
+        let currentTime = timeFormatter.string(from: Date())
+        guard let nightModeTime = Int(currentTime.prefix(through: currentTime.startIndex)) else { return }
+        // if after 5pm local user time, use night mode colors
+        if nightModeTime >= 5 && currentTime.contains("PM") {
+            view.backgroundColor = UIColor.init(displayP3Red: 30, green: 30, blue: 30, alpha: 0.1)
+            numberOfFDegrees?.attributedPlaceholder = NSAttributedString(string: (numberOfFDegrees?.placeholder)!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+            mediatingLabel?.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let existingTextHasDecimalSeperator = textField.text?.range(of: ".")
+        let replacementTextHasDecimalSeperator = string.range(of: ".")
+        let restrictedCharacterSet = CharacterSet.letters
+        if string.rangeOfCharacter(from: restrictedCharacterSet) != nil {
+                    return false
+                 } else {
+        if existingTextHasDecimalSeperator != nil, replacementTextHasDecimalSeperator != nil {
+            return false
+        } else {
+            return true
+        }
+                 }
     }
     
     @IBOutlet var numberOfFDegrees: UITextField?
