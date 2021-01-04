@@ -32,8 +32,10 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let existingTextHasDecimalSeperator = textField.text?.range(of: ".")
-        let replacementTextHasDecimalSeperator = string.range(of: ".")
+        let currentLocale = Locale.current
+        let decimalSeparator = currentLocale.decimalSeparator ?? "."
+        let existingTextHasDecimalSeperator = textField.text?.range(of: decimalSeparator)
+        let replacementTextHasDecimalSeperator = string.range(of: decimalSeparator)
         let restrictedCharacterSet = CharacterSet.letters
         if string.rangeOfCharacter(from: restrictedCharacterSet) != nil {
                     return false
@@ -71,19 +73,19 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         return nf
     }()
     
-    @IBAction func handleFehrenheitInput(_ textField: UITextField) {
-        if let text = textField.text, let value = Double(text) {
-            farhenheitValue = Measurement(value: value, unit: .fahrenheit)
-        } else {
-            farhenheitValue = nil
-        }
-    }
-    
     func updateCelciusLabel() {
         if let celciusValue = celciusValue {
             numberOfCDegrees?.text = numberFormatter.string(from: NSNumber(value: celciusValue.value))
         } else {
             numberOfCDegrees?.text = "???"
+        }
+    }
+    
+    @IBAction func handleFehrenheitInput(_ textField: UITextField) {
+        if let text = textField.text, let value = Double(text) {
+            farhenheitValue = Measurement(value: value, unit: .fahrenheit)
+        } else {
+            farhenheitValue = nil
         }
     }
     
